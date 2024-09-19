@@ -14,16 +14,19 @@ app.use(express.json());
 dotenv.config();
 
 const PORT = process.env.PORT || 4000;
-// const URI = process.env.MongoDBURI;
+ 
 
-// connect to mongoDB
-mongoose.connect("mongodb+srv://ps2753:Yk9t7Obo5BrKtXFw@cluster0.6tvkg.mongodb.net/bookShops?retryWrites=true&w=majority&appName=Cluster0")
-.then(() => {
-    console.log("Connected To DB Sucessfully....")
-})
-.catch((err) => {
-    console.log(err)
-})
+mongoose.connect("mongodb+srv://ps2753:Yk9t7Obo5BrKtXFw@cluster0.6tvkg.mongodb.net/bookShops?retryWrites=true&w=majority&appName=Cluster0", {
+     
+  })
+  .then(x => {
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
+  })
+  .catch(err => {
+    console.error("Error connecting to mongo", err);
+  });
 
 
 // defining routes
